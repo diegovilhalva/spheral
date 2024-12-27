@@ -56,7 +56,14 @@ export const Header = () => {
               <nav className="h-full">
                 {navItems.map(({ name, href }) => (
                   <a href={href} key={href} className="h-full px-10 relative font-bold text-xs tracking-widest text-gray-400 uppercase inline-flex items-center 
-                before:content-[''] before:absolute before:bottom-0 before:h-2 before:w-px before:bg-gray-200/20 before:left-0  last:after:absolute last:after:bottom-0 last:after:h-2 last:after:w-px last:after:bg-gray-200/20 last:after:right-0  ">{name}</a>
+                before:content-[''] before:absolute before:bottom-0 before:h-2 before:w-px before:bg-gray-200/20 before:left-0  last:after:absolute last:after:bottom-0 last:after:h-2 last:after:w-px last:after:bg-gray-200/20 last:after:right-0  "
+                onClick={(e) => {
+                  e.preventDefault()
+                  const element = document.querySelector(href)
+                  if (element) {
+                      element.scrollIntoView({behavior:'smooth'})
+                  }
+                }}>{name}</a>
                 ))}
               </nav>
             </div>
@@ -102,7 +109,14 @@ export const Header = () => {
           <div className="container h-full">
             <nav className="flex flex-col items-center gap-4 py-8 h-full justify-center">
               {navItems.map(({ href, name }) => (
-                <a href={href} key={href} className="text-gray-400 uppercase tracking-widest font-bold text-xs h-10">{name}</a>
+                <a href={href} key={href} className="text-gray-400 uppercase tracking-widest font-bold text-xs h-10" onClick={(e) => {
+                  e.preventDefault()
+                  const element = document.querySelector(href)
+                  if(element){
+                    setIsMobileNavOpen(false)
+                    element.scrollIntoView({behavior:'smooth'})
+                  }
+                }}>{name}</a>
               ))}
               {loginItems.map(({ buttonVariant, href, name }) => (
                 <a href={href} key={href} className="w-full max-w-xs">

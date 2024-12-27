@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import {
   faYoutube,
@@ -21,7 +22,7 @@ export const navItems = [
   },
   {
     name: "Login",
-    href: "#login",
+    href: "#",
   },
 ];
 
@@ -51,7 +52,13 @@ export const Footer = () => {
         <div className="font-extrabold text-2xl">sphereal.ai</div>
         <nav className="flex flex-col gap-8 md:flex-row md:gap-16 items-center">
           {navItems.map((item) => (
-            <a href={item.href} key={item.href} className="uppercase text-xs tracking-widest font-bold text-gray-400">{item.name}</a>
+            <a href={item.href} key={item.href} className="uppercase text-xs tracking-widest font-bold text-gray-400" onClick={(e) => {
+              e.preventDefault()
+              const element = document.querySelector(item.href)
+              if(element){
+                element.scrollIntoView({behavior:'smooth'})
+              }
+            }}>{item.name}</a>
           ))}
         </nav>
       </div>
