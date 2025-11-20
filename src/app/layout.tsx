@@ -14,7 +14,7 @@ const spaceGroteskFont = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "AI SaaS Landing Page",
+  title: "Sphereal AI",
   description: "The future is here",
 };
 
